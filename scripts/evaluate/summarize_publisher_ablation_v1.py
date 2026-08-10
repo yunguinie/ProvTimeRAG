@@ -47,6 +47,11 @@ def exposed_training_groups(train: dict[str, Any], history: dict[str, Any]) -> i
     raise KeyError("training_groups or groups_per_task")
 
 
+def false_abstention_rate(abstention: dict[str, Any]) -> float:
+    confusion = abstention.get("confusion", abstention)
+    return float(confusion["fp"] / abstention["support"])
+
+
 def seed_row(name: str, seed: int, root: Path) -> tuple[dict, dict[str, str]]:
     train = load(root / "metrics.json")
     blind = load(root / "c3_blind_v3_clean_metrics_fp32.json")
@@ -66,8 +71,8 @@ def seed_row(name: str, seed: int, root: Path) -> tuple[dict, dict[str, str]]:
         "dev_insufficient_f1": float(dev["insufficient"]["abstention"]["f1"]),
         "clean_blind_top1": float(blind["metrics"]["top1_accuracy"]),
         "finfact_top1": float(finfact["metrics"]["top1_accuracy"]),
-        "finfact_false_abstention_rate": float(
-            finfact_abstention["fp"] / finfact_abstention["support"]
+        "finfact_false_abstention_rate": false_abstention_rate(
+            finfact_abstention
         ),
     }
     hashes = {

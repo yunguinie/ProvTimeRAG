@@ -1,5 +1,6 @@
 from scripts.evaluate.summarize_publisher_ablation_v1 import (
     exposed_training_groups,
+    false_abstention_rate,
     summarize,
 )
 
@@ -27,3 +28,8 @@ def test_summarize_reports_mean_and_sample_std():
 def test_exposed_training_groups_supports_both_report_contracts():
     assert exposed_training_groups({}, {"training_groups": 7}) == 7
     assert exposed_training_groups({"groups_per_task": 7}, {}) == 21
+
+
+def test_false_abstention_rate_reads_nested_confusion():
+    abstention = {"support": 10, "confusion": {"fp": 3}}
+    assert false_abstention_rate(abstention) == 0.3
