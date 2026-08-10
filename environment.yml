@@ -1,0 +1,11 @@
+﻿name: WSDM_ProvTimeRag_env
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+
+# Lightweight local base only. After activation:
+#   python -m pip install -e ".[dev]"
+# GPU dependencies will be pinned after the cloud CUDA stack is selected.
+

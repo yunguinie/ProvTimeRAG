@@ -1,0 +1,26 @@
+version: 1
+datasets:
+  hoh:
+    license: Apache-2.0
+    usage: temporal_version_training_and_evaluation
+    files:
+      - path: hoh/0000.parquet
+        url: https://huggingface.co/datasets/russwest404/HoH-QAs/resolve/refs%2Fconvert%2Fparquet/default/train/0000.parquet
+        bytes: 28997994
+  averitec:
+    license: CC-BY-NC-4.0
+    usage: provenance_positive_examples_and_external_evaluation
+    files:
+      - path: averitec/train.json
+        url: https://raw.githubusercontent.com/MichSchli/AVeriTeC/main/data/train.json
+        bytes: 10184813
+      - path: averitec/dev.json
+        url: https://raw.githubusercontent.com/MichSchli/AVeriTeC/main/data/dev.json
+        bytes: 1785475
+  conflicts:
+    license: Apache-2.0
+    usage: conflict_detection_and_end_to_end_evaluation_only
+    files:
+      - path: conflicts/conflicts.jsonl
+        url: https://raw.githubusercontent.com/google-research-datasets/rag_conflicts/main/conflicts.jsonl
+        bytes: 46717034

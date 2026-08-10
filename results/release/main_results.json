@@ -1,0 +1,36 @@
+{
+  "release_date": "2026-08-10",
+  "paper_status": "draft_results_frozen_except_data_matched_source_only",
+  "primary_method": "multitask_publisher_identity_router_v3",
+  "seeds": [42, 43, 44],
+  "c2": {
+    "development_top1": {"mean": 0.863768115942029, "sample_std": 0.008230301950435195, "groups": 460},
+    "clean_blind_top1": {"mean": 0.8880837359098229, "sample_std": 0.005957587997966445, "groups": 828},
+    "clean_blind_unseen_top1": {"mean": 0.8928571428571429, "sample_std": 0.011247083166031707},
+    "finfact_top1": {"mean": 0.9382539113818225, "sample_std": 0.005913442708807599, "groups": 11164, "bundles": 2365},
+    "finfact_independent_bundle_exact": {"mean": 0.7685694150810429, "sample_std": 0.020998812766250808}
+  },
+  "strong_baselines": {
+    "clean_blind_top1": {"minilm": 0.5398550724637681, "bge_v2_m3": 0.5990338164251208, "mxbai_large": 0.6086956521739131, "qwen3_reranker_0_6b": 0.7342995169082126},
+    "finfact_top1": {"minilm": 0.5206019347903977, "bge_v2_m3": 0.5962020781082049, "mxbai_large": 0.6744894303117163, "qwen3_reranker_0_6b": 0.8793443210318882}
+  },
+  "no_url_ablation_top1": {
+    "development": {"mean": 0.686231884057971, "sample_std": 0.029193097215193708},
+    "clean_blind": {"mean": 0.6863929146537843, "sample_std": 0.013466770276713145},
+    "finfact": {"mean": 0.7866356144750986, "sample_std": 0.03910860984429006}
+  },
+  "c3_frozen_robust_finfact": {
+    "bundle_exact_mean": 0.772093023255814,
+    "delta_over_independent_mean": 0.0035236081747710055,
+    "significant": false,
+    "per_seed_mcnemar_p": [0.23269319190831084, 0.27995623852893914, 0.27995623852893914]
+  },
+  "c4_fair_order_678": {
+    "raw": {"answer_f1": 0.619216715182672, "citation_precision": 0.49975417895771884, "citation_recall": 0.8915929203539823},
+    "c2": {"answer_f1": 0.6162225680892379, "citation_precision": 0.5302359882005901, "citation_recall": 0.9027777777777777},
+    "c3": {"answer_f1": 0.6142581606772617, "citation_precision": 0.546951819075713, "citation_recall": 0.9400196656833824}
+  },
+  "c1_independent_human_audit": {"records": 50, "best_row_exact": 0.48, "role": "metadata_recovery_feasibility_not_primary_sota"},
+  "superseded": ["legacy_source_swap_v1_url_contract", "averimatec_donor_v1", "gold_first_c4_queues", "early_c3_pre_metricfix"],
+  "pending": ["data_matched_source_only_control_results_not_yet_synced_to_local_workspace"]
+}

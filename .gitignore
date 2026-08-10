@@ -1,0 +1,65 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.python/
+node_modules/
+.env
+.env.*
+!.env.example
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Private/licensed data, models, and caches
+data/
+models/
+checkpoints/
+indexes/
+cache/
+third_party/
+*.faiss
+*.npy
+*.npz
+*.pt
+*.pth
+*.safetensors
+
+# Large experiment artifacts and generated outputs
+results/
+!results/release/
+!results/release/**
+outputs/
+artifacts/
+tmp/
+.tmp_*/
+*.tar
+*.tar.gz
+*.zip
+wandb/
+mlruns/
+
+# Human annotations and API outputs
+*.xlsx
+*.xls
+*.jsonl
+*.ndjson
+
+# Keep final paper artifacts
+!paper/
+!paper/**
+
+# IDE / OS / local QA
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.qa/
+
+# Secrets and certificates
+*.pem
+*.key
+*.p12
+*.pfx
