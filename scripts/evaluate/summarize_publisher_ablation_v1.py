@@ -39,6 +39,14 @@ def load(path: Path) -> dict[str, Any]:
     return row
 
 
+def exposed_training_groups(train: dict[str, Any], history: dict[str, Any]) -> int:
+    if "training_groups" in history:
+        return int(history["training_groups"])
+    if "groups_per_task" in train:
+        return 3 * int(train["groups_per_task"])
+    raise KeyError("training_groups or groups_per_task")
+
+
 def seed_row(name: str, seed: int, root: Path) -> tuple[dict, dict[str, str]]:
     train = load(root / "metrics.json")
     blind = load(root / "c3_blind_v3_clean_metrics_fp32.json")
@@ -50,7 +58,7 @@ def seed_row(name: str, seed: int, root: Path) -> tuple[dict, dict[str, str]]:
         "variant": name,
         "seed": seed,
         "source_url_included": bool(train["source_url_included"]),
-        "training_groups": int(history["training_groups"]),
+        "training_groups": exposed_training_groups(train, history),
         "optimizer_steps": int(history["optimizer_steps"]),
         "training_seconds": float(train["elapsed_seconds"]),
         "dev_publisher_top1": float(dev["source"]["top1_accuracy"]),

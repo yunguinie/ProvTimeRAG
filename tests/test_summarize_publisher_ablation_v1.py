@@ -1,4 +1,7 @@
-from scripts.evaluate.summarize_publisher_ablation_v1 import summarize
+from scripts.evaluate.summarize_publisher_ablation_v1 import (
+    exposed_training_groups,
+    summarize,
+)
 
 
 def test_summarize_reports_mean_and_sample_std():
@@ -20,3 +23,7 @@ def test_summarize_reports_mean_and_sample_std():
     result = summarize(rows)
     assert result["clean_blind_top1"]["mean"] == 2.0
     assert result["clean_blind_top1"]["sample_std"] == 1.0
+
+def test_exposed_training_groups_supports_both_report_contracts():
+    assert exposed_training_groups({}, {"training_groups": 7}) == 7
+    assert exposed_training_groups({"groups_per_task": 7}, {}) == 21
